@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Aniversario #21</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Georgia", cursive;
+      background-color: #ff69b4; /* Rosa fuerte que resalta */
+      overflow: hidden;
+      height: 100%;
+      color: #fff;
+    }
+
+    .center {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #ff69b4;
+      z-index: 10;
+    }
+
+    .title {
+      font-size: 3em;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ff85c1, #ffb6d0);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .letter {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #ff69b4;
+      overflow-y: auto;
+      padding: 60px 20px;
+      box-sizing: border-box;
+      animation: openLetter 1s ease forwards;
+    }
+
+    @keyframes openLetter {
+      0% { transform: scaleY(0); opacity: 0; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .letter p {
+      font-size: 1.3em;
+      line-height: 2;
+      background: rgba(255,255,255,0.15);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+      max-width: 900px;
+      margin: 0 auto;
+      color: #fff;
+    }
+
+    .float {
+      position: fixed;
+      font-size: 2em;
+      opacity: 0.8;
+      animation: float 12s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(110vh) scale(1); opacity: 0; }
+      15% { opacity: 1; }
+      100% { transform: translateY(-20vh) scale(1.4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="center" id="welcome">
+    <div>
+      <h1 class="title">💖 Feliz aniversario #21 💖</h1>
+      <button class="btn" onclick="showLetter()">Leer Carta</button>
+    </div>
+  </div>
+
+  <div class="letter" id="letter">
+    <p>
+      Mamá y papá:<br><br>
+      Este 18 de diciembre, ustedes cumplen 21 años estando casados. Es un día muy importante para conmemorar todo lo lindo y especial que han vivido juntos.<br><br>
+      Quiero en esta carta recordarles lo maravillosos que han sido como padres, como esposos, como seres humanos. Desde lo más profundo de mi alma quiero que sepan cuánto los valoro, los amo y los aprecio. Ustedes son mi ejemplo, mi raíz, mi inspiración.<br><br>
+      También quiero pedirles perdón. Sé que ha habido momentos en los que he sido desobediente, impulsivo o distante. Momentos en los que no he estado a la altura de lo que merecen. Pero quiero que sepan que cada día me esfuerzo por ser mejor, por honrar el amor y los valores que me han dado.<br><br>
+      Les agradezco infinitamente por todo: por sus enseñanzas, por sus sacrificios, por su paciencia, por su ternura. Por darme no solo lo material, sino lo más valioso: su amor incondicional, su fe en mí, su ejemplo de unión y fortaleza.<br><br>
+      Le doy gracias a Dios por tenerlos como padres. Por su nobleza, por su capacidad de superar las dificultades, por su forma de mantenerse unidos y buscar siempre soluciones con amor.<br><br>
+      Este día es para que celebren, para que se abracen fuerte, para que recuerden los momentos felices que han compartido. Para que se miren a los ojos y se sientan orgullosos de todo lo que han construido juntos.<br><br>
+      ¡Los amo con todo mi corazón!<br><br>
+      <strong>ATT: JuanJo</strong>
+    </p>
+  </div>
+
+  <script>
+    function showLetter() {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("letter").style.display = "block";
+    }
+
+    const emojis = ["🎈","💖","💘","💞","💕","💓","💗","✨","🎉","❤️"];
+    function spawnFloat() {
+      const el = document.createElement("div");
+      el.className = "float";
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = (8 + Math.random() * 6) + "s";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 15000);
+    }
+    setInterval(spawnFloat, 500);
+  </script>
+</body>
+</html>
